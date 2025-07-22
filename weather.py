@@ -15,4 +15,17 @@ async def get_weather_by_city(city: str):
             return response.json()
         else:
             return {"error": response.json()}
+async def get_weather_by_coordinates(lat: float, lon: float):
+    params = {
+        "lat": lat,
+        "lon": lon,
+        "appid": API_KEY,
+        "units": "metric"
+    }
 
+    async with httpx.AsyncClient() as client:
+        response = await client.get(BASE_URL, params=params)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return {"error": response.json()}
