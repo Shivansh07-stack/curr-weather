@@ -1,8 +1,6 @@
 import httpx
 import os
-#from dotenv import load_dotenv
 
-#load_dotenv()
 
 API_KEY = os.getenv("57b9ed22b982f308139bffa1d2f3ca80")
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
