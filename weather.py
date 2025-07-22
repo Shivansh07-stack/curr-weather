@@ -7,9 +7,10 @@ import os
 API_KEY = os.getenv("57b9ed22b982f308139bffa1d2f3ca80")
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
-async def get_weather_by_city(city: str):
+async def get_weather_by_coordinates(lat: float, lon: float):
     params = {
-        "q": city,
+        "lat": lat,
+        "lon": lon,
         "appid": API_KEY,
         "units": "metric"
     }
@@ -20,3 +21,4 @@ async def get_weather_by_city(city: str):
             return response.json()
         else:
             return {"error": response.json()}
+
