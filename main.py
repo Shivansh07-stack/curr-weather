@@ -106,7 +106,7 @@ async def current_weather(city: str):
     async with httpx.AsyncClient() as client:
         geo_resp = await client.get(GEO_URL, params=geo_params)
         geo_data = geo_resp.json()
-        if not geo_data or not isinstance(geo_data, list) or len(geo_data) == 0:
+        if not geo_data or len(geo_data) == 0:
             return {"error": "City not found"}
         lat = geo_data[0].get("lat")
         lon = geo_data[0].get("lon")
@@ -263,7 +263,7 @@ async def hourly_forecast(city: str, hours: int = 24):
     async with httpx.AsyncClient() as client:
         geo_resp = await client.get(GEO_URL, params=geo_params)
         geo_data = geo_resp.json()
-        if not geo_data or not isinstance(geo_data, list) or len(geo_data) == 0:
+        if not geo_data or len(geo_data) == 0:
             return {"error": "City not found"}
         lat = geo_data[0].get("lat")
         lon = geo_data[0].get("lon")
@@ -311,7 +311,7 @@ async def weather_alerts(city: str):
     async with httpx.AsyncClient() as client:
         geo_resp = await client.get(GEO_URL, params=geo_params)
         geo_data = geo_resp.json()
-        if not geo_data or not isinstance(geo_data, list) or len(geo_data) == 0:
+        if not geo_data or len(geo_data) == 0:
             return {"error": "City not found"}
         lat = geo_data[0].get("lat")
         lon = geo_data[0].get("lon")
